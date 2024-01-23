@@ -452,4 +452,7 @@ export const bible_titles_en = {
   "3 John":"jo3",
   "Jude":"jde",
   "Revelation":"rev",
-}
+};
+
+export const bible_en = [
+];

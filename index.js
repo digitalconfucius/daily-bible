@@ -9,7 +9,7 @@ import { osb_study_guide } from './data.js';
 // Returns an array of search strings for a given day (1-365) and study guide.
 // We'll support just the Orthodox Study Bible Yearly Guide for now but... who knows?
 function getSearchStringsForDay(day, studyGuide) {
-  return osb_study_guide;
+  return osb_study_guide[day-1];
 }
 
 // Returns the full text of a reading given a locale and search string.
