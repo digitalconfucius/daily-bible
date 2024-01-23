@@ -38,13 +38,13 @@ function getReading(locale, searchString) {
 /** User-facing data functions **/
 
 // Returns the proper name for a Bible code in the given locale.
-// e.g., {en, gen} -> "Genesis"
+// e.g., {"en", "gen"} -> "Genesis"
 function codeToTitle(locale, code) {
   return "TODO";
 }
 
 // Returns the full text of daily readings for a given locale, day (1-365), and study guide.
-function getDailyReadings(locale, day, studyGuide) {
+function getDailyReadings(locale, studyGuide, day) {
   searchStrings = getSearchStringsForDay(day, studyGuide);
 
   const readings = new Array(searchStrings.length);
@@ -67,9 +67,32 @@ function fetchLocale() {
   return "en";
 }
 
+// Returns true if text is a valid day. (1-365)
+function isDay(text) {
+  let number = Number(text);
+
+  if (!Number.isInteger(number)) {
+    return false;
+  }
+  if (text < 1 || text > 365) {
+    return false;
+  }
+
+  return true;
+}
+
 function generate() {
-  let text = document.getElementById('inputText').value;
-  let toShow = "Hello, " + text;
+  let day = document.getElementById('inputText').value;
+
+  let toShow = "";
+
+  if (isDay(day)) {
+    let readings = getDailyReadings("en", "osb", day);
+    toShow = readings.toString();
+  } else {
+    toShow = "Invalid day: " + day;
+  }
+
   document.getElementById('outputText').innerText = toShow;
 }
 
