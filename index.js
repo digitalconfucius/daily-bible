@@ -10,7 +10,7 @@ import { osb_study_guide } from './data.js';
 // We'll support just the Orthodox Study Bible Yearly Guide for now but... who knows?
 function getSearchStringsForDay(day, studyGuide) {
 
-  toReturn = osb_study_guide[day-1];
+  let toReturn = osb_study_guide[day-1];
 
   console.log("search string : " + toReturn);
 
