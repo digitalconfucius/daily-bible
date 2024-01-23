@@ -46,7 +46,7 @@ function codeToTitle(locale, code) {
 
 // Returns the full text of daily readings for a given locale, day (1-365), and study guide.
 function getDailyReadings(locale, studyGuide, day) {
-  searchStrings = getSearchStringsForDay(day, studyGuide);
+  let searchStrings = getSearchStringsForDay(day, studyGuide);
 
   const readings = new Array(searchStrings.length);
   for (let i = 0; i < searchStrings.length; i++) {
@@ -82,6 +82,7 @@ function isDay(text) {
   return true;
 }
 
+// Generate the right content for the page.
 function generate() {
   let day = document.getElementById('inputText').value;
 
@@ -97,6 +98,7 @@ function generate() {
   document.getElementById('outputText').innerText = toShow;
 }
 
+// Export the function.
 window.generate = generate;
 
 console.log("hello");
