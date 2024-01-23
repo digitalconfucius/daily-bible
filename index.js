@@ -5,6 +5,12 @@
 
 /** Internal functions **/
 
+// Returns an array of search strings for a given day (1-365) and study guide.
+// We'll support just the Orthodox Study Bible Yearly Guide for now but... who knows?
+function getSearchStringsForDay(day, studyGuide) {
+  return ["TODO"];
+}
+
 // Returns the full text of a reading given a locale and search string.
 // The search string consists of:
 //    three-letter bible code (required)
@@ -57,7 +63,17 @@ function dailyNT(locale, day) {
   return "TODO";
 }
 
-/** Rendering UX/UI functions **/
+/** UX/UI functions **/
+
+// Grab the day (1-365).
+function fetchDay() {
+  return 1;
+}
+
+// Fetch locale. English only for now.
+function fetchLocale() {
+  return "en";
+}
 
 function generate() {
   let text = document.getElementById('inputText').value;
