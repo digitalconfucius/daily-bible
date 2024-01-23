@@ -1,3 +1,4 @@
+import { osb_study_guide } from './data.js';
 
 /** Implementation-specific utilities **/
 
@@ -8,23 +9,7 @@
 // Returns an array of search strings for a given day (1-365) and study guide.
 // We'll support just the Orthodox Study Bible Yearly Guide for now but... who knows?
 function getSearchStringsForDay(day, studyGuide) {
-  const csvUrl = './osb_study_guide.csv';
-
-  fetch(csvUrl)
-      .then(response => response.text())
-      .then(csvText => {
-          Papa.parse(csvText, {
-              header: true,
-              complete: function(results) {
-                  console.log("Papaparse");
-                  console.log(results.data);
-                  // Now you have your data as an array
-              }
-          });
-      })
-      .catch(error => console.error('Error fetching the CSV file:', error));  
-
-  return ["TODO"];
+  return osb_study_guide;
 }
 
 // Returns the full text of a reading given a locale and search string.
