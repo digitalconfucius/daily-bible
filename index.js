@@ -43,24 +43,16 @@ function codeToTitle(locale, code) {
   return "TODO";
 }
 
-// Returns the full text of the Old Testament reading for a given day (1-365) and locale.
-function dailyOT(locale, day) {
-  return "TODO";
-}
+// Returns the full text of daily readings for a given locale, day (1-365), and study guide.
+function getDailyReadings(locale, day, studyGuide) {
+  searchStrings = getSearchStringsForDay(day, studyGuide);
 
-// Returns the full text of the Psalm for a given day (1-365) and locale.
-function dailyPsalm(locale, day) {
-  return "TODO";
-}
+  const readings = new Array(searchStrings.length);
+  for (let i = 0; i < searchStrings.length; i++) {
+    readings[i] = getReading(locale, searchStrings[i]);
+  }
 
-// Returns the full text of the Proverbs reading for a given day (1-365) and locale.
-function dailyProverb(locale, day) {
-  return "TODO";
-}
-
-// Returns the full text of the New Testament reading for a given day (1-365) and locale.
-function dailyNT(locale, day) {
-  return "TODO";
+  return readings;
 }
 
 /** UX/UI functions **/
