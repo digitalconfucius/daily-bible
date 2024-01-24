@@ -142,7 +142,7 @@ function generate() {
   let readings = getDailyReadings("en", "osb", day);
   let assignment = getSearchStringsForDay(day, "osb");
 
-  toShow += humanReadableAssignment(assignment) + "\n ";
+  toShow += humanReadableAssignment("en", assignment) + "\n ";
   toShow += readingsRenderableString(readings);
 
   document.getElementById('outputText').innerText = toShow;
