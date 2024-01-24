@@ -63,9 +63,9 @@ function getReading(locale, searchString) {
 
   let pageRange = spaceSplitted[1]; // The pageRange (e.g. 24:50-26:35) is the first string after the space.
 
-  let firstPage = chapterAndVerse.split("-"); // e.g. 24:50
+  let firstPage = pageRange.split("-")[0]; // e.g. 24:50
 
-  let firstChapter = chapterAndVerse.split(":"); // e.g. 24
+  let firstChapter = firstPage.split(":")[0]; // e.g. 24
 
   console.log("showing chapter: " + firstChapter);
 
