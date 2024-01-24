@@ -32,13 +32,68 @@ function getSearchStringsForDay(day, studyGuide) {
 
   // Skip the first part, which is just a day number
   let splitted = rawSearchString.split(',');
-  return splitted.slice(1, 5);
+
+  // temp looks like: [1, gen 16-18, psa 7, pro 1:20-24, mat 5:1-20, ""]
+  let temp = splitted;
+
+  let toReturn = [];
+
+  for (let i = 0; i < temp.length; i++) {
+    let bookCodesCount = getBookCodes(temp[i]).length;
+
+    // e.g. "psa 7"
+    if (bookCodesCount == 1) {
+      toReturn.push(temp[i]);
+      continue;
+    }
+
+    // e.g. "dan 11:29; bel 42"
+    if (bookCodesCount > 1) {
+      let splitBySemicolon = temp[i].split("; ");
+
+      for (let j = 0; j < splitBySemicolon.length; j++) {
+        toReturn.push(splitBySemicolon[j]);
+      }
+
+      continue;
+    }
+  }
+
+  return toReturn;
 }
 
 function getFullChapter(locale, book, chapter) {
   return dictionaryToString(bible_en[book][chapter]);
 }
 
+// Returns true if it contains a book code.
+function containsBookCode(searchString) {
+  if (searchString.length < 3) {
+    return false;
+  }
+
+  // Regular expression to test if the first three characters are alphabetical
+  const regex = /^[A-Za-z]{3}/;
+  return regex.test(searchString);
+}
+
+// Given a string like dan 5; bel 3, or just job 3, returns
+// the book codes in an array. Can be empty, 1, or 2 sized.
+function getBookCodes(locale, searchString) {
+  let splitted = searchString.split('; ');
+
+  let toReturn = [];
+
+  for (let i = 0; i < splitted.length; i++) {
+    if (containsBookCode(splitted[i])) {
+      toReturn.push(splitted[i].substring(3));
+    }
+  }
+
+  return toReturn;
+}
+
+// Returns the text of a full book in the Bible. e.g. "joh"
 function getFullBook(locale, book) {
   let toReturn = "";
 
