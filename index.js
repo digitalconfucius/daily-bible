@@ -19,6 +19,17 @@ function getQueryParam(param) {
   return urlParams.get(param);
 }
 
+// Copy text to the clipboard
+function copyToClipboard(text) {
+  navigator.clipboard.writeText(text)
+      .then(() => {
+          console.log('Text copied to clipboard');
+      })
+      .catch(err => {
+          console.error('Failed to copy text to clipboard', err);
+      });
+}
+
 /** Internal functions **/
 
 // Returns an array of search strings for a given day (1-365) and study guide.
@@ -507,10 +518,17 @@ function clickSaveProgressButton() {
   }
 
   if (isValidDay) {
-    console.log("manually saved the progress" + myDay);
+    console.log("manually saved the progress: day " + myDay);
     localStorage.setItem('savedProgressDay', myDay);
   } else {
     console.log("error: no valid day to save");
   }
 }
 window.clickSaveProgressButton = clickSaveProgressButton;
+
+// Copy the clipboard button
+function clickCopyToClipboardButton() {
+    copyToClipboard(getShareTwitterText);
+}
+
+window.clickCopyToClipboardButton = clickCopyToClipboardButton;

@@ -38,7 +38,11 @@
             <div id="outputText"></div>
 
             <button type="button" class="btn btn-success" id="saveProgressButton">Save Progress</button>
-            <button  class="btn btn-primary" id="twitterButton">Share on Twitter</button> </br></br>
+            <button  class="btn btn-primary" id="twitterButton">Share on Twitter</button>
+            <button type="button" class="btn btn-secondary" id="copyClipboardButton">Copy to Clipboard</button>
+
+            </br></br>
+
         </div>
     </div>
 
@@ -75,8 +79,12 @@
         clickSaveProgressButton();
       });
 
+      // Copy to clipboard button
+      document.getElementById('copyClipboardButton').addEventListener('click', function() {
+        clickCopyToClipboardButton();
+      });
+
   </script>  
 
   </body>
 </html>
-
