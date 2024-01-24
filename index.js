@@ -1,5 +1,16 @@
 import { osb_study_guide, bible_en, bible_titles_en } from './data.js';
 
+/** Utilities **/
+
+// Converts a dictionary to string.
+function dictionaryToString(dict) {
+  let toReturn = "";
+  for (const [key, value] of Object.entries(dict)) {
+     toReturn += `${key}: ${JSON.stringify(value)} \n`;
+  }
+  return toReturn;
+}
+
 /** Internal functions **/
 
 // Returns an array of search strings for a given day (1-365) and study guide.
@@ -39,7 +50,7 @@ function getSearchStringsForDay(day, studyGuide) {
 function getReading(locale, searchString) {
   let book = searchString.slice(0, 3);
 
-  return bible_en[book];
+  return dictionaryToString(bible_en[book]);
 }
 
 /** User-facing data functions **/
