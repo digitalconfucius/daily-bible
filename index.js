@@ -46,7 +46,7 @@ function getSearchStringsForDay(day, studyGuide) {
       continue;
     }
 
-    // e.g. "dan 11:29; bel 42"
+    // e.g. "dan 11:29; bel 42" or "sus 1; dan 1"
     if (bookCodesCount > 1) {
       let splitBySemicolon = temp[i].split("; ");
 
@@ -176,41 +176,98 @@ function getFullBook(locale, book) {
 // "a-b" is inclusive of both a and b.
 //
 // Examples of valid search strings:
-// gen 1-3
-// gen 24:50-26:35
-// mar 16
-// oba
-// sus 1; dan 1
-// dan 11:29; bel 42
-// job 36; 37
-// pro 31:26-30
+// gen 1-3                // day 1
+// gen 24:50-26:35        // day 8
+// mar 16                 // day 79
+// oba                    // day 292
+// job 36-37              // day 229
+// pro 31:26-30           // day 365
 function getReading(locale, searchString) {
+  if (searchString.length < 3) {
+    console.log("error: searchString should be at least 3 chars long");
+    return "";
+  }
+
   let book = searchString.slice(0, 3);
   let toShow = "";
 
   console.log("book = " + book);
 
-  // When the assignment is just a book, we print that whole book., e.g. day 292
-  if (searchString.length <= 4) {
-    toShow += humanReadableAssignment(locale, [searchString]) + "\n";  
+  let spaceSplitted = searchString.split(" ");
 
-    return getFullBook(locale, book);
+  // Augment toShow string with the human readable version of that assignment.
+  toShow += humanReadableAssignment(locale, [searchString]) + "\n";  
+
+  // When the assignment is just a book (i.e., there's no spaces), we print that whole book., e.g. day 292
+  if (spaceSplitted.length == 1) {
+    console.log("showing full book: " + book);
+    toShow += getFullBook(locale, book);
+    return toShow;
   }
-
-  let semicolonSplitted = searchString.split("; "); // split by semicolon
   
-  let spaceSplitted = semicolonSplitted[0].split(" ");
+  // Now there should be only two elements in the space-splitted array; the book code and the reading range 
+  if (spaceSplitted.length != 2) {
+    console.log("error: spaceSplitted should be 2");
+    return "";
+  }
 
   let pageRange = spaceSplitted[1]; // The pageRange (e.g. 24:50-26:35) is the first string after the space.
 
-  let firstPage = pageRange.split("-")[0]; // e.g. 24:50
+  let hyphenSplitted = pageRange.split("-");
+
+  // If the length is 1 after hyphen split, it means there is no range, and we just get to show the full chapter.
+  if (hyphenSplitted.length == 1) {
+    console.log("showing single chapter: " + firstChapter);
+    toShow += getFullChapter(locale, book, firstChapter);
+    return toShow;
+  }
+
+  let firstPage = hyphenSplitted[0]; // e.g. 24:50 ; or 36
+  let lastPage = hyphenSplitted[1]; // e.g. 26:35  ; or 37
 
   let firstChapter = firstPage.split(":")[0]; // e.g. 24
 
-  console.log("showing chapter: " + firstChapter);
+  // If there are no colons at all, it means we are getting a simple
+  // chapter range, e.g. job 1-3
+  if (firstPage.split(":").length == 1) {
+    let lastChapter = lastPage;
 
-  toShow += humanReadableAssignment(locale, [searchString]) + "\n";  
-  toShow += getFullChapter(locale, book, firstChapter);
+    console.log("showing chapter range: " + firstChapter + " to " + lastChapter);
+    toShow += getFullChaptersFromStartAndEnd(locale, book, firstChapter, lastChapter);
+
+    return toShow;
+  }
+
+  let firstVerse = firstPage.split(":")[1];
+
+  // If the reading is like "pro 31:26-30", then the first page will have a semicolon, but the second
+  // won't. Therefore, it's a single chapter with a verse selection.
+  if (lastPage.split(":").length == 1) {
+    let lastVerse = lastPage;
+
+    console.log("showing single chapter w/ verse selection: " + firstVerse + " to " + lastVerse);
+    toShow += getVersesFromStartAndEnd(locale, book, firstChapter, firstVerse, lastVerse);
+
+    return toShow;
+  }
+
+  // If we made it here, then it's a range like gen 24:50-26:35
+  let lastChapter = lastPage.split(":")[0]; // e.g 26 
+  let lastVerse = lastPage.split(":")[1];
+
+  console.log("showing multiple chapters with multiple verse selections: " + firstChapter + ":" + firstVerse + " ; " + lastChapter + " : " + lastVerse);
+
+  // Add the first verse range, inclusive.
+  toShow += getVersesFromStart(locale, book, firstChapter, firstVerse);
+
+  // Print the intermediate full chapters, if there's any.
+  // For example, 24:50-26:35 includes the full chapter of 25 in between.
+  for (let i = Number(firstChapter) + 1; i < Number(lastChapter); i++) {
+    toShow += getFullChapter(locale, book, i);
+  }
+
+  // Add the final verse range, inclusive. It starts at 1 obviously.
+  toShow += getVersesFromStartAndEnd(locale, book, lastChapter, 1, lastVerse);
 
   return toShow;
 }
