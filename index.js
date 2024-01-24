@@ -45,7 +45,7 @@ function getFullBook(locale, book) {
   let dict = bible_en[book];
 
   for (const [key, value] of Object.entries(dict)) {
-    toReturn += getFullChapter(locale, book, key) + "\n";
+    toReturn += getFullChapter(locale, book, key);
   }
 
   return toReturn;
