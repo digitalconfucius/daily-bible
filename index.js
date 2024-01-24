@@ -91,13 +91,14 @@ function getVersesFromStart(locale, book, chapter, verseStart) {
   return dictionaryToString(toReturn);
 }
 
+// Get full chapters. Inclusive.
 function getFullChaptersFromStartAndEnd(locale, book, chapterStart, chapterEnd) {
   let bookDict = bible_en[book];
   let toReturn = "";
 
-  for (const [key, value] of Object.entries(chapterDict)) {
-    if (Number(key) >= verseStart) {
-      toReturn[key] = value;
+  for (const [key, value] of Object.entries(bookDict)) {
+    if (Number(key) >= chapterStart && Number(key) <= chapterEnd) {
+      toReturn += getFullChapter(bible_en[book][key]);
     }
   }
 
