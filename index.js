@@ -160,6 +160,7 @@ function readingsRenderableString(readings) {
   return toShow;
 }
 
+// Render the current page for the current day.
 function generateForDay(locale, day) {
   let toShow = "";
 
@@ -205,10 +206,26 @@ function checkAndGenerateDayFromURL() {
   const myDay = getQueryParam('day');
 
   if (myDay !== null) {
-    console.log("Function day parameter:", myDay);
+    console.log("check day parameter:", myDay);
     generateForDay("en", myDay);
   }
 }
 
 // Export the function.
 window.checkAndGenerateDayFromURL = checkAndGenerateDayFromURL;
+
+// Click the next button.
+function clickNext() {
+  // Extract a specific parameter from the URL
+  const myDay = getQueryParam('day');
+
+  if (myDay !== null) {
+    console.log("click next. day parameter:", myDay);
+    generateForDay("en", myDay + 1);
+  } else {
+    generateForDay("en", 1);
+  }
+}
+
+// Export the function.
+window.clickNext = clickNext;
