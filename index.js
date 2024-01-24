@@ -11,6 +11,14 @@ function dictionaryToString(dict) {
   return toReturn;
 }
 
+// Function to extract a query parameter from the URL
+// format: ?myParam=value
+function getQueryParam(param) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  return urlParams.get(param);
+}
+
 /** Internal functions **/
 
 // Returns an array of search strings for a given day (1-365) and study guide.
@@ -152,9 +160,7 @@ function readingsRenderableString(readings) {
   return toShow;
 }
 
-// Generate the right content for the page.
-function generate() {
-  let day = document.getElementById('inputText').value;
+function generateForDay(locale, day) {
   let toShow = "";
 
   // Exit early on invalid input.
@@ -169,14 +175,40 @@ function generate() {
 
   let headerText = "Day " + day + ": " + humanReadableAssignment("en", assignment);
 
+  // Render header
   document.getElementById('readingHeader').innerText = headerText;
 
   toShow += readingsRenderableString(readings);
 
+  // Render main textbox
   document.getElementById('outputText').innerText = toShow;
+
+  // Update URL of the current page
+  const stateObj = {};
+  history.replaceState(stateObj, "Daily Bible", "?day=" + day);
+}
+
+// Click the submit button.
+function clickSubmit() {
+  let day = document.getElementById('inputText').value;
+  generateForDay("en", day);
 }
 
 // Export the function.
-window.generate = generate;
+window.clickSubmit = clickSubmit;
 
 console.log("hello");
+
+// Check if the user already specified a day in the url.
+function checkAndGenerateDayFromURL() {
+  // Extract a specific parameter from the URL
+  const myDay = getQueryParam('day');
+
+  if (myDay !== null) {
+    console.log("Function day parameter:", myDay);
+    generateForDay("en", myDay);
+  }
+}
+
+// Export the function.
+window.checkAndGenerateDayFromURL = checkAndGenerateDayFromURL;

@@ -4,7 +4,7 @@ This website helps you read the Bible in a year according to the [Orthodox Study
 See the demo here: https://digitalconfucius.github.io/daily-bible/
 
 # Process
-1) Convert OSB Study guide from [PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf) to CSV.
+1) Convert OSB Study guide from [PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf) to [CSV](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv).
 2) Clean up lots of dirty data, weird symbols, strange spacing, and missing entries from conversion process.
 3) Download raw Bible data from the [sacred-texts Bible repository](https://sacred-texts.com/bib/osrc/index.htm).
 4) Convert the OSB study guide from its own abbreviation style to the sacred-text style.
@@ -15,7 +15,9 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 9) Given a user-specified day, extract the OSB study plan for that day.
 10) Augment study plan into user-readable English.
 11) Extract corresponding Bible chapters for that study plan.
-12) [TODO] Make sure verses match, handle edge cases with separate books in a single reading.
+12) [TODO] Extract verses from the assignments
+13) [TODO] Handle chapter/verse ranges.
+14) [TODO] Handle edge cases with separate books in a single reading.
 
 # Resources
 Bible Data Project: https://sacred-texts.com/bib/osrc/index.htm

@@ -29,7 +29,7 @@
             <p>Enter a number to get a daily Bible reading.</p>
             <input type="text" id="inputText" placeholder="Enter number from 1-365 here.">
 
-            <button onclick="generate()">Submit</button> </br>
+            <button onclick="clickSubmit()">Submit</button> </br>
 
             <h2 id="readingHeader"></h2>
 
@@ -50,8 +50,13 @@
       textbox.addEventListener('keydown', function(event) {
           // Check if the key pressed is 'Enter'
           if (event.key === 'Enter' || event.keyCode === 13) {
-              generate();
+              clickSubmit();
           }
+      });
+
+      document.addEventListener('DOMContentLoaded', function() {
+          console.log("The page has loaded!");
+          checkAndGenerateDayFromURL();
       });
   </script>  
 
