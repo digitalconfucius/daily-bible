@@ -21,6 +21,9 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 13) [TODO] Handle chapter/verse ranges.
 14) Handle edge cases with separate books in a single reading.
 
+# Technical information
+This is a self-contained static web app with zero backend. We made this decision for speed and ease of hosting on Github Pages. One tradeoff is that all the local data needs to be loaded into memory, including the full text of the Bible. Modern web browsers should be able to handle it well. You could conceivably download this app and use it to read the full Bible in a year without any internet access.
+
 # Resources
 Bible Data Project: https://sacred-texts.com/bib/osrc/index.htm
 
