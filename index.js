@@ -520,8 +520,13 @@ function clickSaveProgressButton() {
   if (isValidDay) {
     console.log("manually saved the progress: day " + myDay);
     localStorage.setItem('savedProgressDay', myDay);
+
+    displayToast("Saved progress as day " + myDay);
+
   } else {
     console.log("error: no valid day to save");
+
+    displayToast("error: no valid day to save.");
   }
 }
 window.clickSaveProgressButton = clickSaveProgressButton;
@@ -529,6 +534,20 @@ window.clickSaveProgressButton = clickSaveProgressButton;
 // Copy the clipboard button
 function clickCopyToClipboardButton() {
     copyToClipboard(getShareTwitterText());
+    displayToast("Copied to clipboard.");
 }
 
 window.clickCopyToClipboardButton = clickCopyToClipboardButton;
+
+// Display toast message
+function displayToast(message) {
+  var toastEl = document.getElementById('lowerToast');
+  var toastBody = toastEl.querySelector('.toast-body');
+
+  // Update the text
+  toastBody.innerHTML = message;
+
+  // Show the toast
+  var toast = new bootstrap.Toast(toastEl);
+  toast.show();
+}
