@@ -35,6 +35,22 @@ function getSearchStringsForDay(day, studyGuide) {
   return splitted.slice(1, 5);
 }
 
+function getFullChapter(locale, book, chapter) {
+  return dictionaryToString(bible_en[book][chapter]);
+}
+
+function getFullBook(locale, book) {
+  let toReturn = "";
+
+  let dict = bible_en[book];
+
+  for (const [key, value] of Object.entries(dict)) {
+    toReturn += getFullChapter(locale, book, key) + "\n";
+  }
+
+  return toReturn;
+}
+
 // Returns the full text of a reading given a locale and search string.
 // The search string consists of:
 //    three-letter bible code (required)
@@ -62,7 +78,7 @@ function getReading(locale, searchString) {
 
   // When the assignment is just a book, we print that whole book.
   if (searchString.length <= 4) {
-    return dictionaryToString(bible_en[book]);
+    return getFullBook(locale, book);
   }
 
   let semicolonSplitted = searchString.split("; "); // split by semicolon
@@ -79,11 +95,13 @@ function getReading(locale, searchString) {
 
   let toShow = "";
 
-  toShow += humanReadableAssignment(locale, [searchString]) + "\n";
-  toShow += dictionaryToString(bible_en[book][firstChapter]);
+  toShow += humanReadableAssignment(locale, [searchString]) + "\n";  
+  toShow += getFullChapter(locale, book, firstChapter);
 
   return toShow;
 }
+
+
 
 /** User-facing data functions **/
 
