@@ -1,8 +1,4 @@
-import { osb_study_guide } from './data.js';
-
-/** Implementation-specific utilities **/
-
-// TODO
+import { osb_study_guide, bible_en, bible_titles_en } from './data.js';
 
 /** Internal functions **/
 
@@ -10,11 +6,14 @@ import { osb_study_guide } from './data.js';
 // We'll support just the Orthodox Study Bible Yearly Guide for now but... who knows?
 function getSearchStringsForDay(day, studyGuide) {
 
-  let toReturn = osb_study_guide[day-1];
+  // e.g. "5,gen 16-18,psa 7,pro 1:20-24,mat 5:1-20,",
+  let rawSearchString = osb_study_guide[day-1];
 
-  console.log("search string : " + toReturn);
+  console.log("raw search string : " + rawSearchString);
 
-  return toReturn;
+  // Skip the first part, which is just a day number
+  let splitted = rawSearchString.split(',');
+  return splitted.slice(1);
 }
 
 // Returns the full text of a reading given a locale and search string.
@@ -38,7 +37,9 @@ function getSearchStringsForDay(day, studyGuide) {
 // dan 11:29; bel 42
 // job 36; 37
 function getReading(locale, searchString) {
-  return searchString;
+  let book = searchString.slice(0, 3);
+
+  return bible_en[book];
 }
 
 /** User-facing data functions **/
@@ -87,6 +88,17 @@ function isDay(text) {
   return true;
 }
 
+// Converts the readings array into something viewable by the user.
+function readingsRenderableString(readings) {
+  let toShow = "";
+
+  for (let i = 0; i < readings.length; i++) {
+    toShow += readings[i] + " </br> ";
+  }
+
+  return toShow;
+}
+
 // Generate the right content for the page.
 function generate() {
   let day = document.getElementById('inputText').value;
@@ -95,7 +107,7 @@ function generate() {
 
   if (isDay(day)) {
     let readings = getDailyReadings("en", "osb", day);
-    toShow = readings.toString();
+    toShow = readingsRenderableString(readings);
   } else {
     toShow = "Invalid day: " + day;
   }
