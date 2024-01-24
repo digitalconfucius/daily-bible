@@ -507,6 +507,7 @@ function clickSaveProgressButton() {
   }
 
   if (isValidDay) {
+    console.log("manually saved the progress" + myDay);
     localStorage.setItem('savedProgressDay', myDay);
   } else {
     console.log("error: no valid day to save");
