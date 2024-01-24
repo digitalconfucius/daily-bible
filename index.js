@@ -187,12 +187,18 @@ function generateForDay(locale, day) {
   // Update URL of the current page
   const stateObj = {};
   history.replaceState(stateObj, "Daily Bible", "?day=" + day);
+
+  // Update input text box
+  document.getElementById('inputText').innerText = day;
 }
 
 // Click the submit button.
 function clickSubmit() {
   let day = document.getElementById('inputText').value;
-  generateForDay("en", day);
+
+  if (day != null && day != " " && day != "") {
+    generateForDay("en", day);
+  }
 }
 
 // Export the function.
