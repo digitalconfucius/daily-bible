@@ -52,7 +52,24 @@ function getReading(locale, searchString) {
 
   console.log("book = " + book);
 
-  return dictionaryToString(bible_en[book]);
+  // When the assignment is just a book, we print that whole book.
+  if (searchString.length <= 4) {
+    return dictionaryToString(bible_en[book]);
+  }
+
+  let semicolonSplitted = searchString.split("; "); // split by semicolon
+  
+  let spaceSplitted = semicolonSplitted[0].split(" ");
+
+  let pageRange = spaceSplitted[1]; // The pageRange (e.g. 24:50-26:35) is the first string after the space.
+
+  let firstPage = chapterAndVerse.split("-"); // e.g. 24:50
+
+  let firstChapter = chapterAndVerse.split(":"); // e.g. 24
+
+  console.log("showing chapter: " + firstChapter);
+
+  return dictionaryToString(bible_en[book][firstChapter]);
 }
 
 /** User-facing data functions **/
