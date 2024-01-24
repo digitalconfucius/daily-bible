@@ -20,7 +20,7 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 12) Extract verses from the assignments
 13) Handle chapter/verse ranges.
 14) Handle edge cases with separate books in a single reading.
-15) Handle differences between Vulgate and Septuagint psalm numbering: http://www.churchofthenativity.net/church-of-the-nativity/orthodoxy/faqs/why-are-your-psalms-numbered-differently-than-in-all-non-orthodox-bibles
+15) Handle differences between Vulgate and Septuagint psalm numbering [(1)](http://www.churchofthenativity.net/church-of-the-nativity/orthodoxy/faqs/why-are-your-psalms-numbered-differently-than-in-all-non-orthodox-bibles) [(2)](https://www.oca.org/liturgics/outlines/septuagint-numbering-psalms)
 
 # Technical information
 This is a self-contained static web app with zero backend. We made this decision for speed and ease of hosting on Github Pages. One tradeoff is that all the local data needs to be loaded into memory, including the full text of the Bible. Modern web browsers should be able to handle it well. You could conceivably download this app and use it to read the full Bible in a year without any internet access.
