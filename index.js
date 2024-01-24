@@ -528,7 +528,7 @@ window.clickSaveProgressButton = clickSaveProgressButton;
 
 // Copy the clipboard button
 function clickCopyToClipboardButton() {
-    copyToClipboard(getShareTwitterText);
+    copyToClipboard(getShareTwitterText());
 }
 
 window.clickCopyToClipboardButton = clickCopyToClipboardButton;
