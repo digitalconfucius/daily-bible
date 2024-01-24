@@ -61,6 +61,36 @@ function getSearchStringsForDay(day, studyGuide) {
   return toReturn;
 }
 
+// Gets the verses of a chapter from start to end.
+// The range is INCLUSIVE! of both start and end.
+function getVerses(locale, book, chapter, verseStart, verseEnd) {
+  let chapter = bible_en[book][chapter];
+  let toReturn = {};
+
+  for (const [key, value] of Object.entries(dict)) {
+    if (Number(key) >= verseStart && Number(key) <= verseEnd) {
+      toReturn[key] = value;
+    }
+  }
+
+  return dictionaryToString(toReturn);
+}
+
+// Gets the verse of a chapter from start to the end of that chapter.
+// Chapters start at "1", so you can get the whole chapter that way too.
+function getVerses(locale, book, chapter, verseStart) {
+  let chapter = bible_en[book][chapter];
+  let toReturn = {};
+
+  for (const [key, value] of Object.entries(dict)) {
+    if (Number(key) >= verseStart) {
+      toReturn[key] = value;
+    }
+  }
+
+  return dictionaryToString(toReturn);
+}
+
 function getFullChapter(locale, book, chapter) {
   return dictionaryToString(bible_en[book][chapter]);
 }
@@ -131,8 +161,10 @@ function getReading(locale, searchString) {
 
   console.log("book = " + book);
 
-  // When the assignment is just a book, we print that whole book.
+  // When the assignment is just a book, we print that whole book., e.g. day 292
   if (searchString.length <= 4) {
+    toShow += humanReadableAssignment(locale, [searchString]) + "\n";  
+
     return getFullBook(locale, book);
   }
 
