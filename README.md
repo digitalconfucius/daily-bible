@@ -3,7 +3,7 @@
 # daily-bible
 This website helps you read the Bible in a year according to the [Orthodox Study Bible](https://en.wikipedia.org/wiki/Orthodox_Study_Bible) yearly planner.
 
-See the demo here: https://digitalconfucius.github.io/daily-bible/
+See the live webpage here: https://digitalconfucius.github.io/daily-bible/
 
 # Process
 1) Convert OSB Study guide from [PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf) to [CSV](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv).
@@ -27,7 +27,9 @@ This is a self-contained static web app with zero backend. We made this decision
 
 The core business logic is contained in [index.js](index.js).
 
+The main English text is the King James Bible with "Apocrypha", which is in the public domain. Additionally, we source Psalm 151 from the NSRV: http://bible.oremus.org/?ql=364191858.
+
 # Resources
-Bible Data Project: https://sacred-texts.com/bib/osrc/index.htm
+Bible Data Project (KJV): https://sacred-texts.com/bib/osrc/index.htm
 
 Orthodox Study Bible, Yearly Reading List ([PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf)). [CSV version](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv) by me.

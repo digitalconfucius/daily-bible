@@ -410,6 +410,14 @@ function checkAndGenerateDayFromURL() {
   if (myDay !== null) {
     console.log("check day parameter:", myDay);
     generateForDay("en", myDay);
+    return;
+  }
+
+  const savedDay = localStorage.getItem('savedProgressDay');
+  if (savedDay !== null) {
+    console.log("check saved progress day:", savedDay);
+    generateForDay("en", savedDay);
+    return;
   }
 }
 
@@ -454,7 +462,7 @@ function getShareTwitterText() {
   let assignment = getSearchStringsForDay(myDay, "osb");
   let assignmentText = humanReadableAssignment("en", assignment);
 
-  let toReturn = "I just finished day " + myDay + " of the Orthodox Study Bible reading challenge: " + externalURL + "?day=" + myDay + " (" + assignmentText + ")";
+  let toReturn = "I just finished day " + myDay + " of the Orthodox Study Bible ☦️ reading challenge! " + externalURL + "?day=" + myDay + " (" + assignmentText + ")";
 
   return toReturn;
 }
@@ -466,6 +474,30 @@ function clickShareTwitterButton() {
 
   window.open(shareURL, '_blank');
 }
-
 // Export the function.
 window.clickShareTwitterButton = clickShareTwitterButton;
+
+function clickSaveProgressButton() {
+  let isValidDay = false;
+
+  // Extract day parameter from the URL
+  let myDay = getQueryParam('day');
+
+  if (myDay != null) {
+    isValidDay = true;
+  } else {
+    // Try extracting day parameter from the input text
+    let textboxValue = document.getElementById('inputText').value;
+    if (textboxValue != null && textboxValue != " " && textboxValue != "") {
+      myDay = textboxValue;
+      isValidDay = true;
+    }
+  }
+
+  if (isValidDay) {
+    localStorage.setItem('savedProgressDay', textboxValue);
+  } else {
+    console.log("error: no valid day to save");
+  }
+}
+window.clickSaveProgressButton = clickSaveProgressButton;

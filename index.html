@@ -25,7 +25,7 @@
         </br>
             <h1> <img src="./bible_logo.png"> Daily Bible</h1>
 
-            <p>This website helps you read the Bible in a year according to the <a href="https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf">Orthodox Study Bible yearly planner</a>.</p>
+            <p>This website helps you read the entire Bible in a year according to the <a href="https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf">Orthodox Study Bible planner</a>.</p>
             <p>See the project page for more details: <a href="https://github.com/digitalconfucius/daily-bible">https://github.com/digitalconfucius/daily-bible</a>.</p>
             <p>Enter a number to get a daily Bible reading.</p>
             <input type="text" id="inputText" placeholder="Enter number from 1-365.">
@@ -37,6 +37,7 @@
 
             <div id="outputText"></div>
 
+            <button type="button" class="btn btn-success" id="saveProgressButton">Mark Finished</button>
             <button  class="btn btn-primary" id="twitterButton">Share on Twitter</button> </br></br>
         </div>
     </div>
@@ -67,6 +68,11 @@
       // Twitter button
       document.getElementById('twitterButton').addEventListener('click', function() {
         clickShareTwitterButton();
+      });
+
+      // Save progress button
+      document.getElementById('saveProgressButton').addEventListener('click', function() {
+        clickSaveProgressButton();
       });
 
   </script>  
