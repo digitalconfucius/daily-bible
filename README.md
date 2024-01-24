@@ -17,8 +17,8 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 9) Given a user-specified day, extract the OSB study plan for that day.
 10) Augment study plan into user-readable English.
 11) Extract corresponding Bible chapters for that study plan.
-12) [TODO] Extract verses from the assignments
-13) [TODO] Handle chapter/verse ranges.
+12) Extract verses from the assignments
+13) Handle chapter/verse ranges.
 14) Handle edge cases with separate books in a single reading.
 
 # Technical information
