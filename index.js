@@ -100,7 +100,7 @@ function humanReadableAssignment(locale, searchStrings) {
 
   console.log("human readable assignment = " + toReturn);
 
-  return "Today's reading assignment: " + toReturn;
+  return toReturn;
 }
 
 // Returns the full text of daily readings for a given locale, day (1-365), and study guide.
@@ -167,7 +167,7 @@ function generate() {
   let readings = getDailyReadings("en", "osb", day);
   let assignment = getSearchStringsForDay(day, "osb");
 
-  let headerText = humanReadableAssignment("en", assignment);
+  let headerText = "Day " + day + ": " + humanReadableAssignment("en", assignment);
 
   document.getElementById('readingHeader').innerText = headerText;
 
