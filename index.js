@@ -63,6 +63,19 @@ function codeToTitle(locale, code) {
   return bible_titles_en[code];
 }
 
+// Convert the search string into something pleasant for humans to read.
+function humanReadableAssignment(locale, searchStrings) {
+  let toReturn = "";
+
+  for (let i = 0; i < searchStrings; i++) {
+    let book = searchStrings[i].slice(0, 3);
+
+    toReturn += book + " " + searchStrings[i].slice(4) + " ";
+  }  
+
+  return toReturn;
+}
+
 // Returns the full text of daily readings for a given locale, day (1-365), and study guide.
 function getDailyReadings(locale, studyGuide, day) {
   let searchStrings = getSearchStringsForDay(day, studyGuide);
@@ -106,7 +119,7 @@ function readingsRenderableString(readings) {
   let toShow = "";
 
   for (let i = 0; i < readings.length; i++) {
-    toShow += readings[i] + " </br> ";
+    toShow += readings[i] + "\n";
   }
 
   return toShow;
@@ -127,7 +140,7 @@ function generate() {
   let readings = getDailyReadings("en", "osb", day);
   let assignment = getSearchStringsForDay(day, "osb");
 
-  toShow += assignment + "\n ";
+  toShow += humanReadableAssignment(assignment) + "\n ";
   toShow += readingsRenderableString(readings);
 
   document.getElementById('outputText').innerText = toShow;
