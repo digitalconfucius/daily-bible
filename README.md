@@ -5,7 +5,7 @@ This website helps you read the Bible in a year according to the [Orthodox Study
 
 See the live webpage here: https://digitalconfucius.github.io/daily-bible/
 
-![image](https://github.com/digitalconfucius/daily-bible/assets/156959605/aa76eba9-1a05-48a5-a63b-d8811871338b)
+![image](https://github.com/digitalconfucius/daily-bible/assets/156959605/753b46d9-273f-435e-b8a5-49cdd0a957ce)
 
 # Process
 1) Convert OSB Study guide from [PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf) to [CSV](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv).
