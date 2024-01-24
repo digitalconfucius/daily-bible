@@ -464,13 +464,51 @@ function clickNext() {
     document.getElementById('outputText').innerText = toShow;
     return;
   }
-  
+
   console.log("click next. day parameter:", myDay);
+
+  // Wrap around to the front.
+  if (Number(myDay) == 365) {
+    generateForDay("en", 1);
+    return;
+  }
+  
   generateForDay("en", Number(myDay) + 1);
 }
 
 // Export the function.
 window.clickNext = clickNext;
+
+// Click the back button.
+function clickBack() {
+  // Extract day parameter from the URL
+  const myDay = getQueryParam('day');
+
+  // Return 1st day if there's null input on "next" button press.
+  if (myDay == null) {
+    generateForDay("en", 1);
+    return;
+  }
+
+  // Exit early on invalid input.
+  if (!isDay(myDay)) {
+    toShow = "Invalid day: " + day;
+    document.getElementById('outputText').innerText = toShow;
+    return;
+  }
+  
+  console.log("click back. day parameter:", myDay);
+
+  // Wrap back to the end.
+  if (Number(myDay) == 1) {
+    generateForDay("en", 365);
+    return;
+  }
+
+  generateForDay("en", Number(myDay) - 1);
+}
+// Export the function.
+window.clickBack = clickBack;
 
 const externalURL = "https://digitalconfucius.github.io/daily-bible";
 
