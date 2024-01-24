@@ -64,10 +64,10 @@ function getSearchStringsForDay(day, studyGuide) {
 // Gets the verses of a chapter from start to end.
 // The range is INCLUSIVE! of both start and end.
 function getVerses(locale, book, chapter, verseStart, verseEnd) {
-  let chapter = bible_en[book][chapter];
+  let chapterDict = bible_en[book][chapter];
   let toReturn = {};
 
-  for (const [key, value] of Object.entries(dict)) {
+  for (const [key, value] of Object.entries(chapterDict)) {
     if (Number(key) >= verseStart && Number(key) <= verseEnd) {
       toReturn[key] = value;
     }
@@ -79,16 +79,20 @@ function getVerses(locale, book, chapter, verseStart, verseEnd) {
 // Gets the verse of a chapter from start to the end of that chapter.
 // Chapters start at "1", so you can get the whole chapter that way too.
 function getVerses(locale, book, chapter, verseStart) {
-  let chapter = bible_en[book][chapter];
+  let chapterDict = bible_en[book][chapter];
   let toReturn = {};
 
-  for (const [key, value] of Object.entries(dict)) {
+  for (const [key, value] of Object.entries(chapterDict)) {
     if (Number(key) >= verseStart) {
       toReturn[key] = value;
     }
   }
 
   return dictionaryToString(toReturn);
+}
+
+function getFullChapters(locale, book, chapterStart, chapterEnd) {
+
 }
 
 function getFullChapter(locale, book, chapter) {

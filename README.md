@@ -19,7 +19,7 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 11) Extract corresponding Bible chapters for that study plan.
 12) [TODO] Extract verses from the assignments
 13) [TODO] Handle chapter/verse ranges.
-14) [TODO] Handle edge cases with separate books in a single reading.
+14) Handle edge cases with separate books in a single reading.
 
 # Resources
 Bible Data Project: https://sacred-texts.com/bib/osrc/index.htm
