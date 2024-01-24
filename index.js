@@ -548,6 +548,10 @@ function displayToast(message) {
   toastBody.innerHTML = message;
 
   // Show the toast
-  var toast = new bootstrap.Toast(toastEl);
+  var toast = new bootstrap.Toast(toastEl, {
+    autohide: true,
+    delay: 1000 // Delay in milliseconds before hiding.
+  });
+
   toast.show();
 }
