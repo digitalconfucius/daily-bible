@@ -172,6 +172,7 @@ function getFullBook(locale, book) {
 // pro 31:26-30
 function getReading(locale, searchString) {
   let book = searchString.slice(0, 3);
+  let toShow = "";
 
   console.log("book = " + book);
 
@@ -193,8 +194,6 @@ function getReading(locale, searchString) {
   let firstChapter = firstPage.split(":")[0]; // e.g. 24
 
   console.log("showing chapter: " + firstChapter);
-
-  let toShow = "";
 
   toShow += humanReadableAssignment(locale, [searchString]) + "\n";  
   toShow += getFullChapter(locale, book, firstChapter);
