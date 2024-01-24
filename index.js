@@ -386,6 +386,9 @@ function generateForDay(locale, day) {
 
   // Update input text box
   document.getElementById('inputText').innerText = day;
+
+  // Save the user's progress if he doesn't have anything saved currently.
+  saveProgressIfEmpty(day);
 }
 
 // Click the submit button.
@@ -401,6 +404,15 @@ function clickSubmit() {
 window.clickSubmit = clickSubmit;
 
 console.log("hello");
+
+// Save the user's progress only if there's no existing saved item.
+function saveProgressIfEmpty(myDay) {
+  const savedDay = localStorage.getItem('savedProgressDay');
+  if (savedDay == null) {
+    console.log("saving progress since user has an empty slot:", myDay);
+    localStorage.setItem('savedProgressDay', myDay);
+  }
+}
 
 // Check if the user already specified a day in the url.
 function checkAndGenerateDayFromURL() {
@@ -495,7 +507,7 @@ function clickSaveProgressButton() {
   }
 
   if (isValidDay) {
-    localStorage.setItem('savedProgressDay', textboxValue);
+    localStorage.setItem('savedProgressDay', myDay);
   } else {
     console.log("error: no valid day to save");
   }
