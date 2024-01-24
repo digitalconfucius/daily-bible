@@ -24,7 +24,7 @@ function getSearchStringsForDay(day, studyGuide) {
 
   // Skip the first part, which is just a day number
   let splitted = rawSearchString.split(',');
-  return splitted.slice(1);
+  return splitted.slice(1, 5);
 }
 
 // Returns the full text of a reading given a locale and search string.
