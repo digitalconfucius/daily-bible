@@ -96,9 +96,15 @@ function getFullChaptersFromStartAndEnd(locale, book, chapterStart, chapterEnd) 
   let bookDict = bible_en[book];
   let toReturn = "";
 
+  // Loop through chapters. key = chapter number; value = verse 
   for (const [key, value] of Object.entries(bookDict)) {
     if (Number(key) >= chapterStart && Number(key) <= chapterEnd) {
       toReturn += getFullChapter(locale, book, key);
+
+      // Add a pretty newline but only if it's not at the end
+      if (Number(key) != chapterEnd) {
+        toReturn += "\n";
+      }
     }
   }
 
@@ -260,12 +266,12 @@ function getReading(locale, searchString) {
   console.log("showing multiple chapters with multiple verse selections: " + firstChapter + ":" + firstVerse + " ; " + lastChapter + " : " + lastVerse);
 
   // Add the first verse range, inclusive.
-  toShow += getVersesFromStart(locale, book, firstChapter, firstVerse);
+  toShow += getVersesFromStart(locale, book, firstChapter, firstVerse) + "\n";
 
   // Print the intermediate full chapters, if there's any.
   // For example, 24:50-26:35 includes the full chapter of 25 in between.
   for (let i = Number(firstChapter) + 1; i < Number(lastChapter); i++) {
-    toShow += getFullChapter(locale, book, i);
+    toShow += getFullChapter(locale, book, i) + "\n";
   }
 
   // Add the final verse range, inclusive. It starts at 1 obviously.
