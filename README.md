@@ -1,3 +1,5 @@
+![logo](bible_logo.png)
+
 # daily-bible
 This website helps you read the Bible in a year according to the [Orthodox Study Bible](https://en.wikipedia.org/wiki/Orthodox_Study_Bible) yearly planner.
 
