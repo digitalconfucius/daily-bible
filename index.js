@@ -69,7 +69,12 @@ function getReading(locale, searchString) {
 
   console.log("showing chapter: " + firstChapter);
 
-  return dictionaryToString(bible_en[book][firstChapter]);
+  let toShow = "";
+
+  toShow += humanReadableAssignment(locale, [searchString]) + "\n";
+  toShow += dictionaryToString(bible_en[book][firstChapter]);
+
+  return toShow;
 }
 
 /** User-facing data functions **/
@@ -95,7 +100,7 @@ function humanReadableAssignment(locale, searchStrings) {
 
   console.log("human readable assignment = " + toReturn);
 
-  return toReturn;
+  return "Today's reading assignment: " + toReturn;
 }
 
 // Returns the full text of daily readings for a given locale, day (1-365), and study guide.
@@ -162,7 +167,10 @@ function generate() {
   let readings = getDailyReadings("en", "osb", day);
   let assignment = getSearchStringsForDay(day, "osb");
 
-  toShow += humanReadableAssignment("en", assignment) + "\n\n ";
+  let headerText = humanReadableAssignment("en", assignment);
+
+  document.getElementById('readingHeader').innerText = headerText;
+
   toShow += readingsRenderableString(readings);
 
   document.getElementById('outputText').innerText = toShow;
