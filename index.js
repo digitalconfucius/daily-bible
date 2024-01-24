@@ -30,7 +30,6 @@ function getSearchStringsForDay(day, studyGuide) {
 
   console.log("raw search string : " + rawSearchString);
 
-  // Skip the first part, which is just a day number
   let splitted = rawSearchString.split(',');
 
   // temp looks like: [1, gen 16-18, psa 7, pro 1:20-24, mat 5:1-20, ""]
@@ -79,7 +78,7 @@ function containsBookCode(searchString) {
 
 // Given a string like dan 5; bel 3, or just job 3, returns
 // the book codes in an array. Can be empty, 1, or 2 sized.
-function getBookCodes(locale, searchString) {
+function getBookCodes(searchString) {
   let splitted = searchString.split('; ');
 
   let toReturn = [];
@@ -126,6 +125,7 @@ function getFullBook(locale, book) {
 // sus 1; dan 1
 // dan 11:29; bel 42
 // job 36; 37
+// pro 31:26-30
 function getReading(locale, searchString) {
   let book = searchString.slice(0, 3);
 
@@ -155,7 +155,6 @@ function getReading(locale, searchString) {
 
   return toShow;
 }
-
 
 
 /** User-facing data functions **/
