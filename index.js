@@ -70,7 +70,10 @@ function humanReadableAssignment(locale, searchStrings) {
   for (let i = 0; i < searchStrings.length; i++) {
     let book = searchStrings[i].substring(0, 3);
 
-    toReturn += book + " " + searchStrings[i].substring(4) + " ";
+    toReturn += bible_titles_en[book] + " " + searchStrings[i].substring(4);
+
+    // Add a comma if it's not the last element
+    if (i!= searchStrings.length - 1) { toReturn += ", " };
   }  
 
   console.log("human readable assignment = " + toReturn);
@@ -142,7 +145,7 @@ function generate() {
   let readings = getDailyReadings("en", "osb", day);
   let assignment = getSearchStringsForDay(day, "osb");
 
-  toShow += humanReadableAssignment("en", assignment) + "\n ";
+  toShow += humanReadableAssignment("en", assignment) + "\n\n ";
   toShow += readingsRenderableString(readings);
 
   document.getElementById('outputText').innerText = toShow;
