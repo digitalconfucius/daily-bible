@@ -418,7 +418,7 @@ window.checkAndGenerateDayFromURL = checkAndGenerateDayFromURL;
 
 // Click the next button.
 function clickNext() {
-  // Extract a specific parameter from the URL
+  // Extract day parameter from the URL
   const myDay = getQueryParam('day');
 
   // Return 1st day if there's null input on "next" button press.
@@ -440,3 +440,29 @@ function clickNext() {
 
 // Export the function.
 window.clickNext = clickNext;
+
+const externalURL = "https://digitalconfucius.github.io/daily-bible";
+
+function getShareTwitterText() {
+  // Extract day parameter from the URL
+  const myDay = getQueryParam('day');
+
+  if (myDay == null) {
+    return "I'm using a daily bible app to track my reading for a year: " + externalURL;
+  }
+
+  let toReturn = "I just finished day " + myDay + " of the Orthodox Study Bible reading challenge: " + externalURL + "?day=" + myDay + " (" + readingsRenderableString(readings) + ")";
+
+  return toReturn;
+}
+
+function clickShareTwitterButton() {
+  let shareURL = "https://twitter.com/intent/tweet?text=";
+
+  shareURL += getShareTwitterText();
+
+  window.open(shareURL, '_blank');
+}
+
+// Export the function.
+window.clickShareTwitterButton = clickShareTwitterButton;

@@ -30,11 +30,14 @@
             <p>Enter a number to get a daily Bible reading.</p>
             <input type="text" id="inputText" placeholder="Enter number from 1-365.">
 
-            <button onclick="clickSubmit()">Submit</button> <button onclick="clickNext()">Next</button> </br>
+            <button class="btn btn-secondary" onclick="clickSubmit()">Submit</button> <button class="btn btn-secondary" onclick="clickNext()">Next</button>
+           </br> </br>
 
             <h2 id="readingHeader"></h2>
 
             <div id="outputText"></div>
+
+            <button  class="btn btn-primary" id="twitterButton">Share on Twitter</button>
         </div>
     </div>
 
@@ -55,10 +58,17 @@
           }
       });
 
+      // Page load
       document.addEventListener('DOMContentLoaded', function() {
           console.log("The page has loaded!");
           checkAndGenerateDayFromURL();
       });
+
+      // Twitter button
+      document.getElementById('twitterButton').addEventListener('click', function() {
+        clickShareTwitterButton();
+      });
+
   </script>  
 
   </body>
