@@ -98,7 +98,7 @@ function getFullChaptersFromStartAndEnd(locale, book, chapterStart, chapterEnd) 
 
   for (const [key, value] of Object.entries(bookDict)) {
     if (Number(key) >= chapterStart && Number(key) <= chapterEnd) {
-      toReturn += getFullChapter(bible_en[book][key]);
+      toReturn += getFullChapter(locale, book, key);
     }
   }
 
