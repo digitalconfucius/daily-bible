@@ -24,6 +24,8 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 # Technical information
 This is a self-contained static web app with zero backend. We made this decision for speed and ease of hosting on Github Pages. One tradeoff is that all the local data needs to be loaded into memory, including the full text of the Bible. Modern web browsers should be able to handle it well. You could conceivably download this app and use it to read the full Bible in a year without any internet access.
 
+The core business logic is contained in [index.js](index.js).
+
 # Resources
 Bible Data Project: https://sacred-texts.com/bib/osrc/index.htm
 

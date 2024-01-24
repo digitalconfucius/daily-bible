@@ -176,12 +176,12 @@ function getFullBook(locale, book) {
 // "a-b" is inclusive of both a and b.
 //
 // Examples of valid search strings:
-// gen 1-3                // day 1
-// gen 24:50-26:35        // day 8
-// mar 16                 // day 79
 // oba                    // day 292
+// mar 16                 // day 79
+// gen 1-3                // day 1
 // job 36-37              // day 229
 // pro 31:26-30           // day 365
+// gen 24:50-26:35        // day 8
 function getReading(locale, searchString) {
   if (searchString.length < 3) {
     console.log("error: searchString should be at least 3 chars long");
@@ -217,6 +217,8 @@ function getReading(locale, searchString) {
 
   // If the length is 1 after hyphen split, it means there is no range, and we just get to show the full chapter.
   if (hyphenSplitted.length == 1) {
+    let firstChapter = pageRange;
+
     console.log("showing single chapter: " + firstChapter);
     toShow += getFullChapter(locale, book, firstChapter);
     return toShow;
