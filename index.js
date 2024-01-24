@@ -50,6 +50,8 @@ function getSearchStringsForDay(day, studyGuide) {
 function getReading(locale, searchString) {
   let book = searchString.slice(0, 3);
 
+  console.log("book = " + book);
+
   return dictionaryToString(bible_en[book]);
 }
 
@@ -58,7 +60,7 @@ function getReading(locale, searchString) {
 // Returns the proper name for a Bible code in the given locale.
 // e.g., {"en", "gen"} -> "Genesis"
 function codeToTitle(locale, code) {
-  return "TODO";
+  return bible_titles_en[code];
 }
 
 // Returns the full text of daily readings for a given locale, day (1-365), and study guide.
@@ -113,15 +115,20 @@ function readingsRenderableString(readings) {
 // Generate the right content for the page.
 function generate() {
   let day = document.getElementById('inputText').value;
-
   let toShow = "";
 
-  if (isDay(day)) {
-    let readings = getDailyReadings("en", "osb", day);
-    toShow = readingsRenderableString(readings);
-  } else {
-    toShow = "Invalid day: " + day;
+  // Exit early on invalid input.
+  if (!isDay(day)) {
+     toShow = "Invalid day: " + day;
+     document.getElementById('outputText').innerText = toShow;
+     return;
   }
+
+  let readings = getDailyReadings("en", "osb", day);
+  let assignment = getSearchStringsForDay(day, "osb");
+
+  toShow += assignment + "\n ";
+  toShow += readingsRenderableString(readings);
 
   document.getElementById('outputText').innerText = toShow;
 }
