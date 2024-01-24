@@ -11,7 +11,7 @@ See the demo here: https://digitalconfucius.github.io/daily-bible/
 5) Update abbreviations to match Orthodox style.
 6) Augment KJV Bible with Psalm 151.
 7) Merge Bible and Apocrypha together.
-8) Parse Bible into JavaScript dictionary format.
+8) [Parse Bible](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/bible_parser.py) into JavaScript dictionary format.
 9) Given a user-specified day, extract the OSB study plan for that day.
 10) Augment study plan into user-readable English.
 11) Extract corresponding Bible chapters for that study plan.

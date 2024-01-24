@@ -219,12 +219,21 @@ function clickNext() {
   // Extract a specific parameter from the URL
   const myDay = getQueryParam('day');
 
-  if (myDay !== null) {
-    console.log("click next. day parameter:", myDay);
-    generateForDay("en", myDay + 1);
-  } else {
+  // Return 1st day if there's null input on "next" button press.
+  if (myDay == null) {
     generateForDay("en", 1);
+    return;
   }
+
+  // Exit early on invalid input.
+  if (!isDay(myDay)) {
+    toShow = "Invalid day: " + day;
+    document.getElementById('outputText').innerText = toShow;
+    return;
+  }
+  
+  console.log("click next. day parameter:", myDay);
+  generateForDay("en", Number(myDay) + 1);
 }
 
 // Export the function.
