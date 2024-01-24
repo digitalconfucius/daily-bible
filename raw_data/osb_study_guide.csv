@@ -22,6 +22,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 21,exo 6:28-9:35,psa 22; 23,pro 4:13-18,mat 14:1-21
 22,exo 10-12,psa 24:1-11,pro 4:19-23,mat 14:22-36
 23,exo 13-15,psa 24:12-22,pro 4:24-28,mat 15:1-20
+24,exo 16-18,psa 25,pro 5:1-6,mat 15:21-39
 25,exo 19-21,psa 26,pro 5:7-14,mat 16
 26,exo 22-24,psa 27,pro 5:15-19,mat 17
 27,exo 25-27,psa 28,pro 5:20-23,mat 18:1-20
@@ -88,6 +89,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 89,jdg 12-14,psa 76:1-10,pro 15:33-38,luk 5:1-16
 90,jdg 15-17,psa 76:11-21,pro 16:1-5,luk 5:17-39
 91,jdg 18; 19,psa 77:1-17,pro 16:6-10,luk 6:1-26
+92,jdg 20; 21,psa 77:18-37,pro 16:11-15,luk 6:27-49
 93,rut 1-4,psa 77:38-55,pro 16:16-20,luk 7:1-17
 94,kg1 1:1-2:17,psa 77:56-72,pro 16:21-25,luk 7:18-50
 95,kg1 2:18-4:22,psa 78,pro 16:26-31,luk 8:1-25
@@ -121,6 +123,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 123,kg3 12:26-13:34,psa 103:1-18,pro 22:6-10,luk 22:1-23
 124,kg3 14-16,psa 103:19-35,pro 22:11-15,luk 22:24-46
 125,kg3 17:1-19:9,psa 104:1-15,pro 22:16-20,luk 22:47-71
+126,kg3 19:10-21:22,psa 104:16-27,pro 22:21-26,luk 23:1-25
 127,kg3 21:23-22:50,psa 104:28-45,pro 22:27-31,luk 23:26-56
 128,kg4 1-3,psa 105:1-15,pro 23:1-5,luk 24:1-35
 129,kg4 4; 5,psa 105:16-31,pro 23:6-12,luk 24:36-53
@@ -154,6 +157,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 157,ch2 24:15-26:23,psa 121; 122,pro 27:19-24,joh 15
 158,ch2 27-29,psa 123; 124,pro 27:25-29,joh 16
 159,ch2 30-32,psa 125; 126,pro 28:1-5,joh 17
+160,ch2 33; 34,psa 127; 128,pro 28:6-11,joh 18:1-27
 161,ch2 35 ; 36,psa 129; 130,pro 28:12-15,joh 18:28-19:4
 162,es1 1:1-2:11,psa 131,pro 28:16-20,joh 19:5-24
 163,es1 2:12-4:42,psa 132; 133,pro 28:21-25,joh 19:25-42
@@ -187,6 +191,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 191,ma1 2:15-3:41,psa 10; 11,pro 2:6-9,act 16:1-18
 192,ma1 3:42-4:61,psa 12; 13,pro 2:10-16,act 16:19-40
 193,ma1 5:1-6:17,psa 14; 15,pro 2:17-23,act 17:1-15
+194,ma1 6:18-7:50,psa 16,pro 3:1-5,act 17:16-34
 195,ma1 8:1-9:53,psa 17:1-17,pro 3:6-10,act 18
 196,ma1 9:54-10:58,psa 17:18-32,pro 3:11-16,act 19:1-22
 197,ma1 10:59-11:53,psa 17:33-51,pro 3:17-22,act 19:23-41
@@ -220,6 +225,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 225,job 29; 30,psa 38,pro 8:11-16,rom 12
 226,job 31; 32,psa 39,pro 8:17-21,rom 13
 227,job 33:1-34:9,psa 40,pro 8:22-26,rom 14
+228,job 34:10-35:16,psa 41; 42,pro 8:27-31,rom 15:1-21
 229,job 36; 37,psa 43:1-9,pro 8:32-35,rom 15:22-33
 230,job 38,psa 43:10-27,pro 9:1-6,rom 16
 231,job 39; 40,psa 44,pro 9:7-11,co1 1
@@ -253,6 +259,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 259,sir 13; 14,psa 68:1-20,pro 14:6-10,co2 8
 260,sir 15; 16,psa 68:21-37,pro 14:11-15,co2 9
 261,sir 17; 18,psa 69,pro 14:16-20,co2 10
+262,sir 19; 20,psa 70:1-13,pro 14:21-25,co2 11:1-15
 263,sir 21; 22,psa 70:14-24,pro 14:26-30,co2 11:16-33
 264,sir 23:1-24:18,psa 71,pro 14:31-36,co2 12
 265,sir 24:19-25:25,psa 72:1-14,pro 15:1-5,co2 13
@@ -286,6 +293,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 293,jon 1-4,psa 92,pro 20:1-5,th2 2
 294,nah 1-3,psa 93:1-15,pro 20:6-10,th2 3
 295,hab 1-3,psa 93:16-23,pro 20:11-15,ti1 1
+296,zep 1-3,psa 94,pro 20:16-20,ti1 2
 297,hag 1; 2,psa 95,pro 20:21-25,ti1 3
 298,zac 1-5,psa 96,pro 21:1-5,ti1 4
 299,zac 6-9,psa 97; 98,pro 21:6-10,ti1 5
@@ -319,6 +327,7 @@ Day,Old Testament,Psalms,Proverbs,New Testament
 327,jer 36-38,psa 118:1-16,pro 25:17-21,jam 4
 328,jer 39-41,psa 118:17-32,pro 25:22-26,jam 5
 329,jer 42-44,psa 118:33-48,pro 25:27-31,pe1 1
+330,jer 45-48,psa 118:49-64,pro 26:1-5,pe1 2
 331,jer 49-52,psa 118:65-80,pro 26:6-9,pe1 3
 332,bar 1; 2,psa 118:81-96,pro 26:10-13,pe1 4
 333,bar 3-5,psa 118:97-112,pro 26:14-17,pe1 5
