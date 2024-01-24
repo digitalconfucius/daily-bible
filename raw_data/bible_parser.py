@@ -2,7 +2,7 @@
 
 # Usage: 
 # cd daily-bible/raw_data
-# python3 bible_parser.py
+# python3 bible_parser.py > output.txt
 
 bible_dict = {}
 
@@ -37,4 +37,21 @@ def process_file(file_path):
 file_path = "bible_en.txt"
 process_file(file_path)
 
-print(bible_dict)
+def print_as_javascript_dict(py_dict):
+    """
+    Converts a Python dictionary into a JavaScript object and prints it.
+    """
+    js_dict_lines = ["{"]
+    for key, value in py_dict.items():
+        # Assuming the keys are strings and the values can be of any data type that's valid in both Python and JavaScript
+        if isinstance(value, str):
+            js_line = f'  "{key}": "{value}",'
+        else:
+            js_line = f'  "{key}": {value},'
+        js_dict_lines.append(js_line)
+    js_dict_lines.append("}")
+
+    js_dict_string = "\n".join(js_dict_lines)
+    print(js_dict_string)
+
+print_as_javascript_dict(bible_dict)
