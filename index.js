@@ -67,7 +67,7 @@ function codeToTitle(locale, code) {
 function humanReadableAssignment(locale, searchStrings) {
   let toReturn = "";
 
-  for (let i = 0; i < searchStrings; i++) {
+  for (let i = 0; i < searchStrings.length; i++) {
     let book = searchStrings[i].substring(0, 3);
 
     toReturn += book + " " + searchStrings[i].substring(4) + " ";
