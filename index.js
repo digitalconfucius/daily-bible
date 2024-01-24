@@ -451,7 +451,10 @@ function getShareTwitterText() {
     return "I'm using a daily bible app to track my reading for a year: " + externalURL;
   }
 
-  let toReturn = "I just finished day " + myDay + " of the Orthodox Study Bible reading challenge: " + externalURL + "?day=" + myDay + " (" + readingsRenderableString(readings) + ")";
+  let assignment = getSearchStringsForDay(myDay, "osb");
+  let assignmentText = humanReadableAssignment("en", assignment);
+
+  let toReturn = "I just finished day " + myDay + " of the Orthodox Study Bible reading challenge: " + externalURL + "?day=" + myDay + " (" + assignmentText + ")";
 
   return toReturn;
 }
