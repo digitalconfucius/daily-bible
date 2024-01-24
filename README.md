@@ -29,9 +29,13 @@ The core business logic is contained in [index.js](index.js).
 
 The main English text is the King James Bible with "Apocrypha", which is in the public domain. Additionally, we source Psalm 151 from the NSRV: http://bible.oremus.org/?ql=364191858.
 
-![image](https://github.com/digitalconfucius/daily-bible/assets/156959605/753b46d9-273f-435e-b8a5-49cdd0a957ce)
-
 # Resources
 Bible Data Project (KJV): https://sacred-texts.com/bib/osrc/index.htm
 
 Orthodox Study Bible, Yearly Reading List ([PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf)). [CSV version](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv) by me.
+
+# Screenshots
+
+![image](https://github.com/digitalconfucius/daily-bible/assets/156959605/753b46d9-273f-435e-b8a5-49cdd0a957ce)
+
+![image](https://github.com/digitalconfucius/daily-bible/assets/156959605/edad5408-33e1-4dc9-a18d-4f5b5d53c817)
