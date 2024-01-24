@@ -110,14 +110,28 @@ function getFullChapter(locale, book, chapter) {
 }
 
 // Returns true if it contains a book code.
+// Book codes contain at least 2 lowercase letters and 
+// at most 1 number. e.g., kg1, pe2, ma3, joh
 function containsBookCode(searchString) {
   if (searchString.length < 3) {
     return false;
   }
 
-  // Regular expression to test if the first three characters are alphabetical
-  const regex = /^[A-Za-z]{3}/;
-  return regex.test(searchString);
+  let letterCounter = 0;
+  // Regex for lowercase alphabetical
+  const regexA = /^[a-z]/;
+  for (let i = 0; i < 3; i++) {
+    if (regexA.test(searchString[i])) {
+      letterCounter++;
+    }
+  }
+
+  // Return false if there's fewer than two letters in the book code 
+  if (letterCounter < 2) return false;
+
+  // Regular expression to test if the first three characters are lowercase alphanumerical
+  const regexB = /^[a-z0-9]{3}/;
+  return regexB.test(searchString);
 }
 
 // Given a string like dan 5; bel 3, or just job 3, returns
