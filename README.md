@@ -5,6 +5,12 @@ This website helps you read the Bible in a year according to the [Orthodox Study
 
 See the live webpage here: https://digitalconfucius.github.io/daily-bible/
 
+# How to use this tool
+Whenever you want to begin the reading schedule, click on [Day 1](https://digitalconfucius.github.io/daily-bible/index.html?day=1).
+Then, finish reading it (ideally within a day), and press the "next" button to get the tomorrow's assignment.
+**Continue this every day to finish the entire Bible in a year!**
+Use the on-screen textbox or the "Save Progress" button to keep track of your progress. 
+
 # Process
 1) Convert OSB Study guide from [PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf) to [CSV](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv).
 2) Clean up lots of dirty data, weird symbols, strange spacing, and missing entries from conversion process.
