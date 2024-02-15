@@ -34,12 +34,30 @@
       .scripture {
       font-family: 'EB Garamond', serif;
       }
+
+      .padded {
+        flex: 1;
+        padding-bottom: 100px; /* Padding against the footer */
+      }
+
+      .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          background-color: #cacbcd;
+          color: white;
+          text-align: center;
+          padding: 1px 0;
+      }
+
+
     </style>
 
   </head>
   <body>
 
-    <div class="centered-div" style="height: 100vh;">
+    <div class="centered-div padded">
         <div class="content" >
 
         </br>
@@ -85,7 +103,11 @@
 
             </p>
 
-            <a href="./privacy.html" class="link-secondary" >Privacy Policy</a>
+            <footer class="footer">
+              <div class="container">
+                  <p class="text-center">© 2024 <a href="https://digitalconfucius.github.io/OrthodoxTao/">Orthodox Tao</a> | <a href="./index.html">Home</a> | <a href="./privacy.html">Privacy Policy</a> | <a href="https://digitalconfucius.github.io/slavonic-letters">Learn Slavonic</a> </p>
+              </div>
+            </footer>
 
             </br></br>
 
