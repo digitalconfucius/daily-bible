@@ -442,6 +442,9 @@ function checkAndGenerateDayFromURL() {
     generateForDay("en", savedDay);
     return;
   }
+
+  // If query param and saved progress day are null, then we default to day 1.
+  generateForDay("en", 1);
 }
 
 // Export the function.

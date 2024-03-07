@@ -65,15 +65,13 @@
             <h1 class="scripture"> <a href="./index.html"> <img src="./bible_logo.png"></a> Daily Bible </h1>
 
             <p>This website helps you read the Bible in a year according to the <a href="https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf">OSB planner</a>.</p>
-            <p><b>How to use this tool</b>: Whenever you want to begin the reading schedule, click on <a href="./index.html?day=1">Day 1</a>.
-            </br>Then, finish reading it (ideally within a day), and press the "next" button to get tomorrow's assignment.
-            </br> Continue this every day to <b>finish the entire Bible in a year</b>! 
-          </br>Use the textbox or the "Save Progress" button to keep track of your studies.
+            <p><b>How to use this tool</b>: Whenever you want to begin, start on <a href="./index.html?day=1">Day 1</a>.
+            </br>Finish reading it, and press the "next" button to get tomorrow's assignment.
+            </br> Continue this every day to read the entire Bible in a year! 
+            <br> See also: a suggested <a href="./prayer.html">prayer for reading the Bible</a>.
         </br>
       </p>
-          <p>A suggested <a href="./prayer.html">prayer for reading the Bible</a>.</p>
-            <p><i>See the project page for more details</i>: <a href="https://github.com/digitalconfucius/daily-bible">https://github.com/digitalconfucius/daily-bible</a>.</p>
-
+          
             <button class="btn btn-secondary" onclick="clickBack()">Back</button>
 
             <input type="text" id="inputText" placeholder="Enter number from 1-365.">
@@ -85,9 +83,13 @@
 
             <div id="outputText" class="scripture-div"></div>
 
+            <button class="btn btn-secondary" onclick="clickBack()">Back</button>
+
             <button type="button" class="btn btn-success" id="saveProgressButton">Save Progress</button>
             <button  class="btn btn-primary" id="twitterButton">Share on Twitter</button>
-            <button type="button" class="btn btn-secondary" id="copyClipboardButton">Copy to Clipboard</button>
+            <button type="button" class="btn btn-light" id="copyClipboardButton">Share via Clipboard</button>
+
+            <button class="btn btn-secondary" onclick="clickNext()">Next</button>
 
           </br>
             <div class="toast" id="lowerToast">
@@ -96,11 +98,12 @@
             </div>
 
             </br></br>
-            <p>Reporting bugs: the easiest way to report a bug is to <a href="https://github.com/digitalconfucius/daily-bible/issues">create an issue</a> on the project page. Thank you!
+            <p><i>See the project page for more details</i>: <a href="https://github.com/digitalconfucius/daily-bible">https://github.com/digitalconfucius/daily-bible</a>.</p>
+            <p>Reporting bugs: the easiest way to report a bug is to <a href="https://github.com/digitalconfucius/daily-bible/issues">create an issue</a> on the project page or message me on <a href="https://twitter.com/OrthodoxTao">Twitter</a>. Thank you!
             
-            </br>
-            </br>You can also track your progress on <a href="https://www.goodreads.com/">Goodreads</a> by adding the <a href="https://www.goodreads.com/book/show/3272346-the-bible">KJV with Apocrypha</a> 
-            and <a href="./goodreads_update_4.png">updating your "pages read"</a> by 4 every day.
+            </p>
+            <p>You can also track your progress on <a href="https://www.goodreads.com/">Goodreads</a> by adding the <a href="https://www.goodreads.com/book/show/3272346-the-bible">KJV with Apocrypha</a> 
+            and updating your "pages read" by 4 every day. 
 
             </p>
 
