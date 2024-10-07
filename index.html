@@ -52,11 +52,35 @@
           padding: 1px 0;
       }
 
+      /* New styles for the header popup */
+      .header-popup {
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: #f8d7da;
+          color: #721c24;
+          text-align: center;
+          padding: 10px;
+          z-index: 1000;
+      }
+
+      .close-btn {
+          float: right;
+          cursor: pointer;
+          font-weight: bold;
+      }
 
     </style>
 
   </head>
   <body>
+    <!-- New header popup -->
+    <div id="headerPopup" class="header-popup">
+        This site is best viewed at <a href="https://dailyorthodox.com">dailyorthodox.com</a>
+        <span class="close-btn" onclick="closeHeaderPopup()">&times;</span>
+    </div>
 
     <div class="centered-div padded">
         <div class="content" >
@@ -139,6 +163,7 @@
       document.addEventListener('DOMContentLoaded', function() {
           console.log("The page has loaded!");
           checkAndGenerateDayFromURL();
+          checkAndShowHeaderPopup();
       });
 
       // Twitter button
@@ -155,6 +180,18 @@
       document.getElementById('copyClipboardButton').addEventListener('click', function() {
         clickCopyToClipboardButton();
       });
+
+      // Function to check and show header popup
+      function checkAndShowHeaderPopup() {
+          if (window.location.hostname !== "dailyorthodox.com") {
+              document.getElementById('headerPopup').style.display = 'block';
+          }
+      }
+
+      // Function to close header popup
+      function closeHeaderPopup() {
+          document.getElementById('headerPopup').style.display = 'none';
+      }
   </script>  
 
   </body>
