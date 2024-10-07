@@ -78,7 +78,7 @@
   <body>
     <!-- New header popup -->
     <div id="headerPopup" class="header-popup">
-        We have a new web address! This site is best viewed at <a href="https://dailyorthodox.com" onclick="gtag('event', 'click', {'event_category': 'Outbound Link', 'event_label': 'New Domain Redirect', 'transport_type': 'beacon'});">dailyorthodox.com</a>.
+        We have a new web address! This site is best viewed at <a href="https://dailyorthodox.com" id="newDomainLink" onclick="gtag('event', 'click', {'event_category': 'Outbound Link', 'event_label': 'New Domain Redirect', 'transport_type': 'beacon'});">dailyorthodox.com</a>.
         <span class="close-btn" onclick="closeHeaderPopup()">&times;</span>
     </div>
 
@@ -150,7 +150,17 @@
 
     <script>
       var textbox = document.getElementById('inputText');
-  
+      
+      // Get the current day parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentDay = urlParams.get('day');
+      
+      // Update the link with the current day parameter
+      const newDomainLink = document.getElementById('newDomainLink');
+      if (currentDay) {
+          newDomainLink.href = `https://dailyorthodox.com?day=${currentDay}`;
+      }
+
       // Add event listener for 'keydown' event
       textbox.addEventListener('keydown', function(event) {
           // Check if the key pressed is 'Enter'
