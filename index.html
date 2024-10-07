@@ -202,6 +202,31 @@
       function closeHeaderPopup() {
           document.getElementById('headerPopup').style.display = 'none';
       }
+
+        // Function to get URL parameter
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Function to send GA event
+        function sendGAEvent() {
+            var day = getUrlParameter('day');
+            if (day) {
+                gtag('event', 'view_day', {
+                    'event_category': 'Bible Reading',
+                    'event_label': 'Day',
+                    'value': day
+                });
+            }
+        }
+
+        // Call the function when the page loads
+        window.onload = function() {
+            sendGAEvent();
+        };
   </script>  
 
   </body>
