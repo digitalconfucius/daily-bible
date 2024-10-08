@@ -1,9 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+   <!-- (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWBSS5SMJC"></script>
+  <script src="/dark-mode.js"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BWBSS5SMJC');
+  </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orthodox Christian Daily Bible Reading Plan</title>
+    
+    <meta name="description" content="Follow our Daily Orthodox Bible reading plan to read the entire Bible in a year. Perfect for Orthodox Christians seeking to read daily scripture.">
+
+    <meta name="keywords" content="Daily Orthodox Bible, Orthodox Christian Bible, Bible reading plan, Orthodox Study Bible, daily scripture, Orthodox Christianity, Orthodoxy">
+
+    <link rel="icon" href="./favicon_cross.png" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dailyorthodox.com/">
+    <meta property="og:title" content="Daily Orthodox Bible: Reading Plan">
+    <meta property="og:description" content="Read the complete Bible in a year using the Orthodox Study Bible planner. For Orthodox Christians and inquirers. Includes Apocrypha!">
+    <meta property="og:image" content="https://dailyorthodox.com/bible_logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://dailyorthodox.com/">
+    <meta property="twitter:title" content="Daily Orthodox Bible: Reading Plan">
+    <meta property="twitter:description" content="Read the complete Bible in a year using the Orthodox Study Bible planner. For Orthodox Christians and inquirers. Includes Apocrypha!">
+    <meta property="twitter:image" content="https://dailyorthodox.com/bible_logo.png">
+
+    <!-- Structured data for rich snippets -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Daily Orthodox Bible",
+          "url": "https://dailyorthodox.com",
+          "description": "A daily reading plan for the Orthodox Study Bible, helping Orthodox Christians read through the entire Bible in a year.",
+          "potentialAction": {
+            "@type": "ReadAction",
+            "target": "https://dailyorthodox.com/index.html?day=1"
+          }
+        }
+    </script>
+
+    <!-- EB Garamond -->
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -25,7 +77,7 @@
             text-align: center;
         }
         .scripture {
-            font-family: 'Times New Roman', Times, serif;
+            font-family: 'EB Garamond', serif;
         }
         table {
             width: 100%;
@@ -47,13 +99,31 @@
         .book {
             font-weight: bold;
         }
+        
+    .padded {
+        flex: 1;
+        padding-bottom: 100px; /* Padding against the footer */
+      }
+
+      .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 30px;
+          background-color: #cacbcd;
+          color: white;
+          text-align: center;
+          padding: 1px 0;
+      }
     </style>
 </head>
 <body>
-    <div class="centered-div">
+    <div class="centered-div padded">
         <h1 class="scripture">Orthodox Christian Daily Bible Reading Plan</h1>
         <h2 class="scripture">Read the Full Orthodox Bible in a Year</h2>
-        
+        <p><a href="./index.html">Home</a></p>
+
     <table>
         <thead>
             <tr>
@@ -2624,7 +2694,15 @@
         </tbody>
     </table>
     
-    <h3>Source: Orthodox Study Bible</h3>
+</br>
+    <h4>Source: Orthodox Study Bible</h4>
+
+    <footer class="footer">
+        <div class="container">
+            <p class="text-center">© 2024 <a href="https://orthodoxtao.substack.com/about">Orthodox Tao</a> | <a href="./index.html">Home</a> | <a href="https://forms.gle/BggaVhZUK3TERaus6">Submit Feedback</a> | <a href="./privacy.html">Privacy Policy</a> | <a href="https://www.buymeacoffee.com/digitalconfucius">Donate</a> </p>
+        </div>
+      </footer>
+      <button class="btn rounded-circle p-2 opacity-25" id="dark-mode-toggle" style="position:fixed;bottom:38px;right:8px" data-turbo-permanent></button>
 
     </div>
 </body>
