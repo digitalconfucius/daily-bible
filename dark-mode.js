@@ -3,7 +3,10 @@
 let colorScheme;
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  const cachedScheme = localStorage.getItem('colorScheme');
+  if (cachedScheme) {
+    setColorScheme(cachedScheme);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
     setColorScheme("dark");
   } else {
     setColorScheme("light");
@@ -22,6 +25,7 @@ window.addEventListener('DOMContentLoaded', () => {
     } else if (colorScheme == "light") {
       setColorScheme("dark");
     }
+    localStorage.setItem('colorScheme', colorScheme);
   });
 });
 
