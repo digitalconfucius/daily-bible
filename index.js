@@ -248,7 +248,7 @@ function getReading(locale, searchString) {
 
   // If there are no colons at all, it means we are getting a simple
   // chapter range, e.g. job 1-3
-  if (firstPage.split(":").length == 1) {
+  if (firstPage.split(":").length == 1 && lastPage.split(":").length == 1) {
     let lastChapter = lastPage;
 
     console.log("showing chapter range: " + firstChapter + " to " + lastChapter);
@@ -259,9 +259,9 @@ function getReading(locale, searchString) {
 
   let firstVerse = firstPage.split(":")[1];
 
-  // If the reading is like "pro 31:26-30", then the first page will have a semicolon, but the second
+  // If the reading is like "pro 31:26-30", then the first page will have a colon, but the second
   // won't. Therefore, it's a single chapter with a verse selection.
-  if (lastPage.split(":").length == 1) {
+  if (firstPage.split(":").length != 1 && lastPage.split(":").length == 1) {
     let lastVerse = lastPage;
 
     console.log("showing single chapter w/ verse selection: " + firstVerse + " to " + lastVerse);
@@ -273,6 +273,11 @@ function getReading(locale, searchString) {
   // If we made it here, then it's a range like gen 24:50-26:35
   let lastChapter = lastPage.split(":")[0]; // e.g 26 
   let lastVerse = lastPage.split(":")[1];
+
+  // If this triggers, it means the first half is a full chapter and the second is a chapter with verse, like Genesis 22-24:49 
+  if (firstVerse == null) {
+    firstVerse = 1;
+  }
 
   console.log("showing multiple chapters with multiple verse selections: " + firstChapter + ":" + firstVerse + " ; " + lastChapter + " : " + lastVerse);
 
@@ -325,6 +330,9 @@ function getDailyReadings(locale, studyGuide, day) {
   const readings = new Array(searchStrings.length);
   for (let i = 0; i < searchStrings.length; i++) {
     readings[i] = getReading(locale, searchStrings[i]);
+
+    // console.log("the search string is " + searchStrings[i]);
+    // console.log("the reading is " + readings[i]);
   }
 
   return readings;
@@ -442,6 +450,9 @@ function checkAndGenerateDayFromURL() {
     generateForDay("en", savedDay);
     return;
   }
+
+  // If query param and saved progress day are null, then we default to day 1.
+  generateForDay("en", 1);
 }
 
 // Export the function.
