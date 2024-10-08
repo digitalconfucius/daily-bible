@@ -11,6 +11,13 @@ Then, finish reading it (ideally within a day), and press the "next" button to g
 **Continue this every day to finish the entire Bible in a year!**
 Use the on-screen textbox or the "Save Progress" button to keep track of your progress. 
 
+# local server
+
+`cd daily-bible`
+`python3 -m http.server`
+
+Local version will be live on localhost:8000 (or whatever default setting you have for python web server).
+
 # Process
 1) Convert OSB Study guide from [PDF](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.pdf) to [CSV](https://github.com/digitalconfucius/daily-bible/blob/main/raw_data/osb_study_guide.csv).
 2) Clean up lots of dirty data, weird symbols, strange spacing, and missing entries from conversion process.
