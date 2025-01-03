@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWBSS5SMJC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BWBSS5SMJC');
+    </script>
+
+<link rel="icon" href="./favicon.png" type="image/png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slavonic Game</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+
+        <!-- EB Garamond -->
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+        <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+        
+        <link rel="stylesheet" href="https://slavonic.github.io/css/fonts.css" type="text/css">
+
+    <style>
+
+        h1 {
+          font-family: 'EB Garamond', serif;
+        } 
+
+        h2 {
+          font-family: 'Ponomar Unicode';
+        } 
+
+        .content {
+        flex: 1;
+        padding-bottom: 100px; /* Padding against the footer */
+        min-height: 100vh; 
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #495057;
+            overflow: auto;
+        }
+
+        .red {
+          color: #B22222; /* Roman looking red / Orthodox feast day red */
+        }
+
+        .italics-english {
+            font-family: 'EB Garamond', serif;
+            font-style: italic;
+        }
+
+        .card-title {
+            font-size: 3em;
+          font-family: 'Ponomar Unicode';
+          color: #B22222;
+        }
+
+        .letter-name-slavonic {
+          font-family: 'Ponomar Unicode';
+          font-size: 2em;
+        }
+
+        .letter-name-russian {
+            font-family: "Lora", serif;
+        }
+
+        .pronunciation-hint {
+          font-family: 'EB Garamond', serif;
+          font-size: 1.1em;
+        } 
+
+        .english-text {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.1em;
+        }
+
+        .slavonic-text {
+            font-family: 'Ponomar Unicode', serif;
+            font-size: 1.6em;
+        }
+
+        .russian-text {
+            font-family: 'Lora', serif;
+            font-size: 1.4em;
+        }
+
+      .footer {
+          font-family: 'EB Garamond', serif;
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 30px;
+          background-color: #cacbcd;
+          color: white;
+          text-align: center;
+          padding: 1px 0;
+      }
+
+    .btn-russian {
+        background-color: #B22222 !important;
+        font-family: 'Ponomar Unicode', serif;
+        color:#cacbcd;
+        padding: 5px 5px;
+        font-size: 1.3em;
+    }
+
+    .output-style {
+        padding: 10px 10px;
+    }
+
+    </style>
+
+</head>
+<body>
+
+<div class="content">
+
+<div class="container mt-5">
+
+<h1><span class = "red">Slavonic Letter Game</span></h1> 
+<h2><span class = "red">Славоник Леттер Геим</span></h2> </br>
+
+<p class="english-text">Are you interested in learning Slavonic letters, but too lazy to learn Russian grammar, or even to learn any Slavic words at all? No problem! Try this Slavonic Letter Game to turn any English text into Slavonic-looking words. Delight your friends, astonish your priest, and frustrate your enemies!
+
+</p>
+
+<textarea class="form-control" id="inputText" rows="3"></textarea> 
+
+</br>
+
+<button class = "btn-russian" onclick="generate()">Сꙋвмїт</button> 
+
+</br> </br>
+
+<div class="card">
+
+<div id="outputText" class="slavonic-text output-style"></div>
+
+</div>
+
+</br></br>
+
+<div class="card">
+
+<div id="outputText2" class="russian-text output-style"></div>
+
+</div>
+
+</br> <p class = "english-text">For more serious learning, check out our <a href="./index.html">home page</a>. </p>
+
+
+</div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+      <p class="text-center">© 2024 <a href="https://orthodoxtao.substack.com/about">Orthodox Tao</a> | <a href="./index.html">Home</a> | <a href="./privacy.html">Privacy Policy</a> | <a href="./references.html">References</a> | <a href="https://digitalconfucius.github.io/daily-bible/">Daily Orthodox Bible</a> | <a href="./chart.html">Chart Version</a> </p>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+
+    let replacementMap = {
+        'A': 'А',
+        'B': 'Б',
+        'C': 'К',
+        'D': 'Д',
+        'E': 'Е',
+        'F': 'Ф',
+        'G': 'Г',
+        'H': 'Х',
+        'I': 'И',
+        'J': 'Ж',
+        'K': 'К',
+        'L': 'Л',
+        'M': 'М',
+        'N': 'Н',
+        'O': 'О',
+        'P': 'П',
+        'Q': 'К',
+        'R': 'Р',
+        'S': 'С',
+        'T': 'Т',
+        'U': 'У',
+        'V': 'В',
+        'W': 'В',
+        'X': 'Ѯ',
+        'Y': 'Ы',
+        'Z': 'З',
+
+        'CY': 'СИ',
+        'CE': 'СЄ',
+        'CI': 'СИ',
+        
+        'YA': 'Ѧ',
+        'YE': 'Є',
+        'YO': 'Ю',
+
+        'PS': 'Ѱ',
+        'TH': 'Ѳ',
+
+        'SH': 'Ш',
+        'SCH': 'Щ',
+        
+        'CH': 'Ч',
+        'TS': 'Ц',
+        'KH': 'Х',
+
+        'OT': 'Ѿ',
+
+        'EE': 'І',
+    };
+
+    // Generate lowercase mappings
+    
+    Object.keys(replacementMap).forEach(key => {
+        const lowercaseKey = key.toLowerCase();
+        const lowercaseValue = replacementMap[key].toLowerCase();
+        replacementMap[lowercaseKey] = lowercaseValue;
+    });
+    
+    // Function to replace based on the map
+    function replaceFromMap(match) {
+    // Lookup the match in the replacement map and return the replacement
+    return replacementMap[match];
+    }
+
+    function replaceText(myText) {
+
+        // Create a pattern that matches any key in the replacement map
+        // Use Object.keys() to get an array of the map's keys, sort them by length (descending), join with "|" to create an OR pattern
+        const pattern = Object.keys(replacementMap)
+        .sort((a, b) => b.length - a.length) // Ensure longer keys are matched first
+        .join('|');
+
+        const regex = new RegExp(pattern, 'g'); // 'g' flag for global search
+
+        // Perform the replacement
+        const resultString = myText.replace(regex, replaceFromMap);
+
+        return resultString;
+    }
+
+    function generate() {
+        let text = document.getElementById('inputText').value;
+
+        let toShow = replaceText(text);
+
+        document.getElementById('outputText').innerText = toShow;
+        document.getElementById('outputText2').innerText = toShow;
+    }
+
+    var textbox = document.getElementById('inputText');
+  
+  // Add event listener for 'keydown' event
+  textbox.addEventListener('keydown', function(event) {
+      // Check if the key pressed is 'Enter'
+      if (event.key === 'Enter' || event.keyCode === 13) {
+          generate();
+      }
+  });
+
+</script>
+
+<script src="./index.js"></script>
+
+</body>
+</html>
