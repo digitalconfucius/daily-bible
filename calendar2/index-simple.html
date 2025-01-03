@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-BWBSS5SMJC"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-BWBSS5SMJC');
+    </script>
+
+<link rel="icon" href="./favicon.png" type="image/png">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Byzantine Calendar</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- EB Garamond -->
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@1&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+        
+    <style>
+
+        a {
+          color: #B22222;
+        } 
+
+        body {
+            background-color: #f8f9fa;
+            color: #495057;
+            min-height: 120vh; /* 120% of the viewport height */
+        }
+        .calendar-container {
+            padding-top: 100px;
+        }
+        .date-display {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .intro {
+            font-family: 'EB Garamond', serif;
+            font-size: 2em;
+        }
+        .middle {
+            font-family: 'EB Garamond', serif;
+            font-size: 2em;
+            font-style: italic;
+        }
+
+        .anno {
+            font-family: 'EB Garamond', serif;
+            font-size: 2.22em;
+            color: #111111;
+            font-weight: bold;
+        }
+        .annoEnglish {
+            font-family: 'EB Garamond', serif;
+            font-size: 2em;
+            font-style: italic;
+        }
+
+        .current-year {
+            font-family: 'EB Garamond', serif;
+            font-size: 8em;
+            font-weight: bold;
+            color: #B22222; /* Roman looking red / Orthodox feast day red */
+        }
+
+        .current-date {
+          font-family: 'EB Garamond', serif;
+            font-size: 4em;
+            color: #B22222; /* Byzantine looking purple */
+        }
+
+        .gregorian-date {
+          font-family: 'EB Garamond', serif;
+            font-size: 1.1em;
+            color: #b0b4b7;
+        }
+
+        .dow {
+          font-family: 'EB Garamond', serif;
+            font-size: 4em;
+            color: #732164;
+
+        }
+
+        .outro {
+          font-family: 'EB Garamond', serif;
+            font-size: 1.5em;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .explain {
+          font-family: 'EB Garamond', serif;
+            font-size: 1.1em;
+            color: #b0b4b7;
+        }
+
+        .disclaimer {
+          font-family: 'EB Garamond', serif;
+            font-size: .9em;
+            color: #cccccc;
+            font-style: italic;
+        }
+
+      .privacy-policy {
+        font-family: 'EB Garamond', serif;
+
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 30px;
+          background-color: #cacbcd;
+          color: white;
+          text-align: center;
+          padding: 1px 0;
+      }
+
+    </style>
+</head>
+<body>
+    <div class="container calendar-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 date-display">
+
+              <div class="intro" id="intro">The Current Date is</div>
+
+              <div class="current-date" id="currentDate"></div>
+
+            </br>
+              
+              <div class="annoEnglish" id="annoEnglish"></div>
+
+                <div class="anno" id="anno"></div>
+
+            </br>
+                <div class="outro" id="outro">according to the Roman Julian calendar.</div>
+
+          </br>
+                <img src="./logo.png">
+
+            </br></br>
+
+            <div class="gregorian-date" id="gregorianDate"></div>
+
+            <div class="explain" id="explain">
+              You may learn more about the Roman Julian calendar here: [<a href="https://orthodoxwiki.org/Byzantine_Creation_Era">1</a>] [<a href="https://orthodoxwiki.org/Julian_Calendar">2</a>].</div>
+                
+
+            </br>
+<div class="explain" id="explain">
+  Daily feasts & readings can be found on the <a href="https://www.holytrinityorthodox.com/htc/">HTC Maryland website</a>.
+</br> Interested in reading the Bible? Check out <a href="https://digitalconfucius.github.io/daily-bible/">Daily Bible (OSB planner)</a>.
+</div>
+
+            </div>
+        </div>
+    </div>
+
+<footer class="privacy-policy">
+  <div class="container">
+      <p class="text-center">© 2024 <a href="https://orthodoxtao.org">Orthodox Tao</a> | <a href="./privacy.html">Privacy Policy</a> | <a href="./index.html">Complex Mode</a> | <a href="./index-simple.html?mode=ad">Switch to AD</a> </p>
+  </div>
+</footer>
+
+    <script>
+        // Function to extract a query parameter from the URL
+        // format: ?myParam=value
+        function getQueryParam(param) {
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          return urlParams.get(param);
+        }
+
+        const Modes = {
+          AnnoMundi: 0,
+          AnnoDominiJulian: 1,
+        }
+
+        let modeSetting = Modes.AnnoMundi;
+
+        // Extract a specific parameter from the URL
+        const modeParam = getQueryParam('mode');
+
+        if (modeParam !== null && modeParam == "ad") {
+          console.log("check mode parameter:", modeParam);
+          modeSetting = Modes.AnnoDominiJulian;
+        }
+
+        // Current difference between Gregorian and Byzantine year.
+        const BYZ_OFFSET_YEAR = 5508;
+
+        // Remove 13 days for now... Need to retune it in 60 years if this website is even still around.
+        const JULIAN_OFFSET_DAYS = 13;
+
+        const today = new Date();
+        const byzantineToday = new Date();
+        const julianToday = new Date();
+
+        // Add the byzantine offset for Anno Mundi
+        byzantineToday.setFullYear(today.getFullYear() + BYZ_OFFSET_YEAR);
+
+        // Add 1 year after September 14 (NS), and remove it on January 1 (NS)
+        // Note: January is 0, February is 1, ..., September is 8
+        if (today.getMonth() > 8 || (today.getMonth() === 8 && today.getDate() >= 14)) {
+            byzantineToday.setFullYear(byzantineToday.getFullYear() + 1);
+        }
+
+        // Add the Julian offset
+        byzantineToday.setDate(byzantineToday.getDate() - JULIAN_OFFSET_DAYS);
+        julianToday.setDate(julianToday.getDate() - JULIAN_OFFSET_DAYS);
+
+        // Display stuff
+        const currentDateElement = document.getElementById('currentDate');
+        const currentYearElement = document.getElementById('currentYear');
+        const gregorianDateElement = document.getElementById('gregorianDate');
+        const dowElement = document.getElementById('dow');
+
+        let displayedToday = today;
+
+        // Update the "annos" based on AM or AD setting
+        const annoElement = document.getElementById('anno');
+        const annoEnglishElement = document.getElementById('annoEnglish');
+
+        if (modeSetting == Modes.AnnoMundi) {
+          annoElement.innerHTML = "ANNO MUNDI (A.M.)";
+
+          displayedToday = byzantineToday;
+
+          gregorianDateElement.innerHTML = "Today's date is reckoned as " + today.toLocaleDateString('en-us', {year:"numeric", month:"long", day:"numeric"}) + " on <a href=\"./index-simple.html?mode=ad\">the civil calendar</a>.";
+
+        } else if (modeSetting == Modes.AnnoDominiJulian) {
+          annoElement.innerHTML = "ANNO DOMINI (A.D.)";
+
+          displayedToday = julianToday;
+
+          gregorianDateElement.innerHTML = "Today's date is reckoned as " + byzantineToday.toLocaleDateString('en-us', {year:"numeric", month:"long", day:"numeric"}) + " on <a href=\"./index-simple.html\">the A.M. calendar</a>.";
+        }
+
+        currentDateElement.innerHTML = displayedToday.toLocaleDateString('en-us', {year:"numeric", month:"long", day:"numeric"});
+        currentYearElement.innerHTML = displayedToday.getFullYear();
+
+        dowElement.innerHTML = today.toLocaleDateString('en-us', { weekday:"long"}).toLocaleUpperCase();
+
+    </script>
+</body>
+</html>
